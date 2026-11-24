@@ -119,9 +119,11 @@
                     </div>
 
                     <div class="pt-2">
-                        <button type="submit" class="w-full bg-[#ed1e28] hover:bg-[#d41720] text-white font-bold text-xs py-3 rounded-2xl shadow-lg shadow-red-500/20 active:scale-[0.99] transition flex items-center justify-center gap-2">
+                        <button type="submit" 
+                            class="w-full bg-[#ed1e28] hover:bg-[#d41720] text-white font-bold text-xs py-3.5 rounded-2xl shadow-lg shadow-red-500/20 active:scale-[0.99] transition flex items-center justify-center gap-2 cursor-pointer"
+                            style="background-color: #ed1e28 !important; color: #ffffff !important;">
                             <span>Selesaikan Pendaftaran</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </button>
                     </div>
                 </form>

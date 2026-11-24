@@ -118,12 +118,12 @@
 
                     <div>
                         <label for="identifierInput" class="block text-xs font-bold text-[#1a1c1d] mb-1.5">Email atau Username Civitas</label>
-                        <div class="relative">
+                        <div class="relative flex items-center">
                             <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                             </div>
                             <input type="text" id="identifierInput" name="identifier" value="{{ old('identifier') }}" required autofocus
-                                class="w-full bg-white border border-gray-200 rounded-2xl pl-10 pr-4 py-3 text-xs text-[#1a1c1d] focus:outline-none focus:border-[#ed1e28] focus:ring-2 focus:ring-[#ed1e28]/10 transition shadow-2xs"
+                                class="w-full h-11 bg-white border border-gray-200 rounded-2xl pl-10 pr-4 text-xs text-[#1a1c1d] focus:outline-none focus:border-[#ed1e28] focus:ring-2 focus:ring-[#ed1e28]/10 transition shadow-2xs"
                                 placeholder="nama@telkomuniversity.ac.id / username">
                         </div>
                         @error('identifier')
@@ -134,20 +134,22 @@
                     <div>
                         <div class="flex items-center justify-between mb-1.5">
                             <label for="passwordInput" class="block text-xs font-bold text-[#1a1c1d]">Kata Sandi</label>
-                            <button type="button" onclick="openForgotPasswordModal()" class="text-[11px] text-[#ed1e28] hover:text-[#b6252a] font-semibold transition">
+                            <button type="button" onclick="openForgotPasswordModal()" class="text-[11px] text-[#ed1e28] hover:text-[#b6252a] font-semibold transition cursor-pointer">
                                 Lupa Sandi?
                             </button>
                         </div>
-                        <div class="relative">
+                        <div class="relative flex items-center">
                             <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                             </div>
                             <input type="password" id="passwordInput" name="password" required
-                                class="w-full bg-white border border-gray-200 rounded-2xl pl-10 pr-10 py-3 text-xs text-[#1a1c1d] focus:outline-none focus:border-[#ed1e28] focus:ring-2 focus:ring-[#ed1e28]/10 transition shadow-2xs"
+                                class="w-full h-11 bg-white border border-gray-200 rounded-2xl pl-10 pr-10 text-xs text-[#1a1c1d] focus:outline-none focus:border-[#ed1e28] focus:ring-2 focus:ring-[#ed1e28]/10 transition shadow-2xs"
                                 placeholder="Masukkan kata sandi akun Anda">
-                            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition" title="Tampilkan / Sembunyikan Kata Sandi">
-                                <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                            </button>
+                            <div class="absolute inset-y-0 right-0 pr-3.5 flex items-center">
+                                <button type="button" onclick="togglePasswordVisibility()" class="p-1 text-gray-400 hover:text-gray-600 transition focus:outline-none flex items-center justify-center cursor-pointer" title="Tampilkan / Sembunyikan Kata Sandi">
+                                    <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                </button>
+                            </div>
                         </div>
                         @error('password')
                             <p class="text-[11px] text-red-500 font-semibold mt-1">{{ $message }}</p>
@@ -161,9 +163,11 @@
                         </label>
                     </div>
 
-                    <button type="submit" class="w-full bg-gradient-to-r from-[#ed1e28] to-[#d41720] hover:from-[#d41720] hover:to-[#b6252a] text-white font-black text-xs py-3.5 rounded-2xl shadow-lg shadow-red-500/25 active:scale-[0.99] transition flex items-center justify-center gap-2">
+                    <button type="submit" 
+                        class="w-full bg-[#ed1e28] hover:bg-[#d41720] text-white font-black text-xs py-3.5 rounded-2xl shadow-lg shadow-red-500/25 active:scale-[0.99] transition flex items-center justify-center gap-2 cursor-pointer"
+                        style="background-color: #ed1e28 !important; color: #ffffff !important;">
                         <span>Masuk ke Akun</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </button>
                 </form>
             </div>
@@ -207,7 +211,9 @@
                 <span>Gedung GKU Lantai 1 / Selaru</span>
             </div>
         </div>
-        <button type="button" onclick="closeForgotPasswordModal()" class="w-full py-2.5 bg-[#ed1e28] hover:bg-[#d41720] text-white text-xs font-bold rounded-xl shadow-md transition">
+        <button type="button" onclick="closeForgotPasswordModal()" 
+            class="w-full py-2.5 bg-[#ed1e28] hover:bg-[#d41720] text-white text-xs font-bold rounded-xl shadow-md transition cursor-pointer"
+            style="background-color: #ed1e28 !important; color: #ffffff !important;">
             Tutup
         </button>
     </div>

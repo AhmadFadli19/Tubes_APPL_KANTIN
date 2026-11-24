@@ -11,12 +11,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
-    <!-- Vite Assets (Safe Check for Hosting without Node/NPM) -->
-    @if(file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Standalone Production Assets (100% PHP/HTML — Tanpa Perlu Node.js di Server Hosting) -->
+    @php
+        $manifestPath = public_path('build/manifest.json');
+        $appCss = null;
+        $appJs = null;
+        if (file_exists($manifestPath)) {
+            $manifest = json_decode(file_get_contents($manifestPath), true);
+            $appCss = $manifest['resources/css/app.css']['file'] ?? null;
+            $appJs = $manifest['resources/js/app.js']['file'] ?? null;
+        }
+    @endphp
+
+    @if(!empty($appCss))
+        <link rel="stylesheet" href="{{ asset('build/' . $appCss) }}">
+    @endif
+    @if(!empty($appJs))
+        <script src="{{ asset('build/' . $appJs) }}" defer></script>
     @endif
 
-    <!-- Tailwind CSS CDN (Ensures instant zero-configuration styling on any hosting / cPanel) -->
+    <!-- Tailwind CSS CDN (Memastikan seluruh styling UI tampil instan & rapi tanpa runtime Node.js) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {

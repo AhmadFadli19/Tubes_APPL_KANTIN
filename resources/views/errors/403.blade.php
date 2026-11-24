@@ -9,8 +9,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    @if(file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Standalone Production Assets (100% PHP/HTML — Tanpa Node.js) -->
+    @php
+        $manifestPath = public_path('build/manifest.json');
+        $appCss = null;
+        if (file_exists($manifestPath)) {
+            $manifest = json_decode(file_get_contents($manifestPath), true);
+            $appCss = $manifest['resources/css/app.css']['file'] ?? null;
+        }
+    @endphp
+    @if(!empty($appCss))
+        <link rel="stylesheet" href="{{ asset('build/' . $appCss) }}">
     @endif
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
