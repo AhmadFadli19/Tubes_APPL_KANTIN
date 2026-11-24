@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Keamanan: Blokir akses ke file sensitif
+    RewriteRule ^(\.env|\.git|composer\.(json|lock)|phpunit\.xml|CLAUDE\.md|AGENTS\.md) - [F,L,NC]
+
+    # Keamanan: Blokir akses langsung ke folder backend
+    RewriteRule ^(app|bootstrap|config|database|resources|routes|storage|tests|vendor)/ - [F,L,NC]
+
+    # Alihkan seluruh request ke folder public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
